@@ -11,5 +11,6 @@ public class Background extends GameObject{
     public void paint(Graphics g){
         g.setColor(new Color(181,181, 255));
         g.fillRect(0,0,20, 20);
+
     }
 }
