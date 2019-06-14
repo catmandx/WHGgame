@@ -22,12 +22,30 @@ public class Program {
                 if(e.getKeyCode() == KeyEvent.VK_LEFT || e.getKeyCode() == KeyEvent.VK_A){
                     KeyEventPress.isLeftPress = true;
                 }
+                if(e.getKeyCode() == KeyEvent.VK_RIGHT || e.getKeyCode() == KeyEvent.VK_D){
+                    KeyEventPress.isRightPress = true;
+                }
+                if(e.getKeyCode() == KeyEvent.VK_UP || e.getKeyCode() == KeyEvent.VK_W){
+                    KeyEventPress.isUpPress = true;
+                }
+                if(e.getKeyCode() == KeyEvent.VK_DOWN || e.getKeyCode() == KeyEvent.VK_S){
+                    KeyEventPress.isDownPress = true;
+                }
             }
 
             @Override
             public void keyReleased(KeyEvent e) {
                 if(e.getKeyCode() == KeyEvent.VK_LEFT || e.getKeyCode() == KeyEvent.VK_A){
                     KeyEventPress.isLeftPress = false;
+                }
+                if(e.getKeyCode() == KeyEvent.VK_RIGHT || e.getKeyCode() == KeyEvent.VK_D){
+                    KeyEventPress.isRightPress = false;
+                }
+                if(e.getKeyCode() == KeyEvent.VK_UP || e.getKeyCode() == KeyEvent.VK_W){
+                    KeyEventPress.isUpPress = false;
+                }
+                if(e.getKeyCode() == KeyEvent.VK_DOWN || e.getKeyCode() == KeyEvent.VK_S){
+                    KeyEventPress.isDownPress = false;
                 }
             }
         });

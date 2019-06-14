@@ -21,11 +21,28 @@ public class Player extends GameObject {
 
     @Override
     public void run(){
-        if(KeyEventPress.isLeftPress){
-            velocity.x = -1;
-        }else if(!KeyEventPress.isLeftPress){
-            velocity.x=0;
-        }
+        this.move();
         super.run();
+    }
+
+    private void move() {
+        double vx = 0;
+        double vy = 0;
+
+        if(KeyEventPress.isUpPress) {
+            vy -= 2;
+        }
+        if(KeyEventPress.isRightPress) {
+            vx += 2;
+        }
+        if(KeyEventPress.isDownPress) {
+            vy += 2;
+        }
+        if(KeyEventPress.isLeftPress) {
+            vx -= 2;
+        }
+
+        velocity.set(vx, vy);
+        velocity.setLength(2);
     }
 }
