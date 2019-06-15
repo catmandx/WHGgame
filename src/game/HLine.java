@@ -11,8 +11,5 @@ public class HLine extends Line {
         this.position = position;
             this.dimensions = new BoxCollider(this,30, 4);
             this.hitBox = new BoxCollider(this, 28, 5);
-
     }
-
-
 }

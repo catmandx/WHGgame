@@ -60,6 +60,14 @@ public class GameObject {
     public Vector2D anchor; //vi tri tam anh
 
     public void paint(Graphics g) {
+        //debug
+        g.setColor(Color.CYAN);
+        g.drawRect((int)(hitBox.left()),
+                (int)(hitBox.top()),
+                hitBox.width,
+                hitBox.height);
+        g.setColor(Color.YELLOW);
+        g.fillOval((int) (position.x-3), (int)(position.y-3), 5,5);
     }
 
     public void run(){

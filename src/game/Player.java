@@ -19,15 +19,8 @@ public class Player extends GameObject {
         g.setColor(Color.BLACK);
         ((Graphics2D)g).setStroke(new BasicStroke(3));
         g.drawRect((int)(position.x - 20 * anchor.x), (int)(position.y- 20 * anchor.y), 20, 20);
-        g.setColor(Color.cyan);
         ((Graphics2D)g).setStroke(new BasicStroke(1));
-        g.drawRect((int)(hitBox.left()),
-                (int)(hitBox.top()),
-                hitBox.width,
-                hitBox.height);
-        g.setColor(Color.YELLOW);
-        g.fillOval((int) (position.x-3), (int)(position.y-3), 5,5);
-
+        super.paint(g);
     }
 
     @Override
