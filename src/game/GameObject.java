@@ -13,6 +13,7 @@ public class GameObject {
         objects.add(this);
         position = new Vector2D();
         velocity = new Vector2D();
+        anchor = new Vector2D(0.5,0.5);
     }
 
 
@@ -35,7 +36,6 @@ public class GameObject {
     public Vector2D anchor; //vi tri tam anh
 
     public void paint(Graphics g) {
-        Graphics2D g2 = (Graphics2D) g;
     }
 
     public void run(){
