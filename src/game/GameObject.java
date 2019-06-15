@@ -16,6 +16,30 @@ public class GameObject {
         anchor = new Vector2D(0.5,0.5);
     }
 
+    public static <E extends GameObject> E findInactive(Class<E> cls){
+        for (int i = 0; i < objects.size(); i++) {
+            GameObject object = objects.get(i);
+            if(cls.isAssignableFrom(object.getClass())
+                    && !object.active){
+                return (E) object;
+            }
+        }
+        return null;
+    }
+    public static <E extends GameObject> E findIntersects(Class<E> cls, BoxCollider hitBox){
+        //E ~Enemy |Player|bullet....
+        //cls ~ Enemy.class | Player.class | Enemy.class..
+        for (int i = 0; i < objects.size(); i++) {
+            GameObject object = objects.get(i);
+            if(object.active
+                    && object.hitBox != null
+                    && object.hitBox.intersects(hitBox)
+                    && cls.isAssignableFrom(object.getClass())){
+                return (E) object;
+            }
+        }
+        return null;
+    }
 
     public static void renderAll(Graphics g) {
         for (int i = 0; i < objects.size(); i++) {

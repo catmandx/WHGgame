@@ -1,17 +1,14 @@
 package game;
 
 import game.physics.BoxCollider;
-import tklibs.Mathx;
 
 import java.awt.*;
 
 public class Player extends GameObject {
-    BoxCollider line;
     public Player(){
+        this.active = true;
         position.set(100,100);
-        anchor = new Vector2D(0, 0);
         hitBox = new BoxCollider(this, 20, 20);
-        line = new BoxCollider(new Vector2D(90,90), 0,30);
     }
 
     @Override
@@ -22,19 +19,14 @@ public class Player extends GameObject {
         g.setColor(Color.BLACK);
         ((Graphics2D)g).setStroke(new BasicStroke(3));
         g.drawRect((int)(position.x - 20 * anchor.x), (int)(position.y- 20 * anchor.y), 20, 20);
-        g.drawLine((int)(line.position.x - line.width * line.anchor.x),
-                (int)(line.position.y - line.height * line.anchor.y),
-                (int)(line.position.x - line.width * line.anchor.x),
-                (int)(line.position.y - line.height * line.anchor.y)+line.height);
         g.setColor(Color.cyan);
-        g.drawRect((int)(hitBox.position.x - hitBox.width * hitBox.anchor.x),
-                (int)(hitBox.position.y - hitBox.height*hitBox.anchor.y),
+        ((Graphics2D)g).setStroke(new BasicStroke(1));
+        g.drawRect((int)(hitBox.left()),
+                (int)(hitBox.top()),
                 hitBox.width,
                 hitBox.height);
-        g.drawRect((int)(line.position.x - line.width * line.anchor.x),
-                (int)(line.position.y - line.height * line.anchor.y),
-                line.width,
-                line.height);
+        g.setColor(Color.YELLOW);
+        g.fillOval((int) (position.x-3), (int)(position.y-3), 5,5);
 
     }
 
@@ -43,6 +35,7 @@ public class Player extends GameObject {
         this.move();
         this.limitPosition();
         super.run();
+
     }
 
     private void move() {
@@ -67,16 +60,37 @@ public class Player extends GameObject {
     }
     int i =0;
     private void limitPosition(){
-        if(this.hitBox.intersects(line)){
-            if(hitBox.checkSides(line)=="left" && velocity.x < 0){
-                velocity.x = 0;
-                position.x = line.left();
-            }
-            if(hitBox.checkSides(line)=="right" && velocity.x > 0){
-                velocity.x = 0;
-                position.x = line.left()-20;
-            }
 
+//
+//        if(this.hitBox.intersects(line2)){
+//            if(hitBox.checkTopBottom(line2)=="top" && velocity.y <= 0){
+//                velocity.y = 0;
+//                position.y = line2.bot()+anchor.y * hitBox.height;
+//            }else if(hitBox.checkTopBottom(line2)=="bottom" && velocity.y >= 0){
+//                velocity.y = 0;
+//                position.y = line2.top()- hitBox.height + anchor.y * hitBox.height;
+//            }
+//        }
+        VLine line = GameObject.findIntersects(VLine.class, this.hitBox);
+        if(line != null){
+            if(hitBox.checkSides(line.hitBox)=="left" && velocity.x <= 0){
+                velocity.x = 0;
+                position.x = line.hitBox.right()+anchor.x*hitBox.width;
+            } else if(hitBox.checkSides(line.hitBox)=="right" && velocity.x >= 0){
+                velocity.x = 0;
+                position.x = line.hitBox.left()- hitBox.width + anchor.x*hitBox.width;
+            }
+        }
+
+        HLine hLine = GameObject.findIntersects(HLine.class, this.hitBox);
+        if(hLine != null){
+            if(hitBox.checkTopBottom(hLine.hitBox)=="top" && velocity.y <= 0){
+                velocity.y = 0;
+                position.y = hLine.hitBox.bot()+anchor.y * hitBox.height;
+            }else if(hitBox.checkTopBottom(hLine.hitBox)=="bottom" && velocity.y >= 0){
+                velocity.y = 0;
+                position.y = hLine.hitBox.top()- hitBox.height + anchor.y * hitBox.height;
+            }
         }
     }
 }
