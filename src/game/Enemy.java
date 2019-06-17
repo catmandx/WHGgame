@@ -16,6 +16,7 @@ public class Enemy extends GameObject {
         g.setColor(Color.BLUE);
         g.fillOval((int)(position.x - 20 * anchor.x), (int)(position.y- 20 * anchor.y), 20, 20);
         g.setColor(Color.black);
+        ((Graphics2D)g).setStroke(new BasicStroke(3));
         g.drawOval((int)(position.x - 20 * anchor.x), (int)(position.y- 20 * anchor.y), 20, 20);
         ((Graphics2D)g).setStroke(new BasicStroke(1));
         super.render(g);

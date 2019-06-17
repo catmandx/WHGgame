@@ -8,13 +8,13 @@ import java.awt.*;
 
 public class GamePanel extends JPanel {
     Player player;
-    VLine line1;
-    HLine line;
+    Enemy enemy;
     Map1 map1;
 
     public GamePanel() {
         map1 = new Map1();
         player = GameObject.recycle(Player.class);
+        enemy = GameObject.recycle(Enemy.class);
     }
 
     public void paint(Graphics g) {
