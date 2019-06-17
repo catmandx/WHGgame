@@ -1,88 +1,81 @@
 package game;
 
 import game.physics.BoxCollider;
+import game.wall.HLine;
+import game.wall.VLine;
 
 import java.awt.*;
 
 public class Player extends GameObject {
-    public Player(){
+    int i = 0;
+
+    public Player() {
         this.active = true;
-        position.set(100,100);
+        position.set(200, 200);
         hitBox = new BoxCollider(this, 20, 20);
     }
 
     @Override
-    public void paint(Graphics g){
-        super.paint(g);
+    public void render(Graphics g) {
+        super.render(g);
         g.setColor(Color.RED);
-        g.fillRect((int)(position.x - 20 * anchor.x), (int)(position.y- 20 * anchor.y), 20, 20);
+        g.fillRect((int) (position.x - 20 * anchor.x), (int) (position.y - 20 * anchor.y), 20, 20);
         g.setColor(Color.BLACK);
-        ((Graphics2D)g).setStroke(new BasicStroke(3));
-        g.drawRect((int)(position.x - 20 * anchor.x), (int)(position.y- 20 * anchor.y), 20, 20);
-        ((Graphics2D)g).setStroke(new BasicStroke(1));
-        super.paint(g);
+        ((Graphics2D) g).setStroke(new BasicStroke(3));
+        g.drawRect((int) (position.x - 20 * anchor.x), (int) (position.y - 20 * anchor.y), 20, 20);
+        ((Graphics2D) g).setStroke(new BasicStroke(1));
+        super.render(g);
     }
 
     @Override
-    public void run(){
+    public void run() {
         this.move();
         this.limitPosition();
         super.run();
-
     }
 
     private void move() {
         double vx = 0;
         double vy = 0;
 
-        if(KeyEventPress.isUpPress) {
+        if (KeyEventPress.isUpPress) {
             vy -= 2;
         }
-        if(KeyEventPress.isRightPress) {
+        if (KeyEventPress.isRightPress) {
             vx += 2;
         }
-        if(KeyEventPress.isDownPress) {
+        if (KeyEventPress.isDownPress) {
             vy += 2;
         }
-        if(KeyEventPress.isLeftPress) {
+        if (KeyEventPress.isLeftPress) {
             vx -= 2;
         }
 
         velocity.set(vx, vy);
         velocity.setLength(2);
     }
-    int i =0;
-    private void limitPosition(){
 
-//
-//        if(this.hitBox.intersects(line2)){
-//            if(hitBox.checkTopBottom(line2)=="top" && velocity.y <= 0){
-//                velocity.y = 0;
-//                position.y = line2.bot()+anchor.y * hitBox.height;
-//            }else if(hitBox.checkTopBottom(line2)=="bottom" && velocity.y >= 0){
-//                velocity.y = 0;
-//                position.y = line2.top()- hitBox.height + anchor.y * hitBox.height;
-//            }
-//        }
-        VLine line = GameObject.findIntersects(VLine.class, this.hitBox);
-        if(line != null){
-            if(hitBox.checkSides(line.hitBox)=="left" && velocity.x <= 0){
+    private void limitPosition() {
+        //LIMIT X
+        VLine vLine = GameObject.findIntersects(VLine.class, this.hitBox);
+        if (vLine != null) {
+            if (hitBox.checkSides(vLine.hitBox) == "left" && velocity.x <= 0) {
                 velocity.x = 0;
-                position.x = line.hitBox.right()+anchor.x*hitBox.width;
-            } else if(hitBox.checkSides(line.hitBox)=="right" && velocity.x >= 0){
+                position.x = vLine.hitBox.right() + anchor.x * hitBox.width;
+            } else if (hitBox.checkSides(vLine.hitBox) == "right" && velocity.x >= 0) {
                 velocity.x = 0;
-                position.x = line.hitBox.left()- hitBox.width + anchor.x*hitBox.width;
+                position.x = vLine.hitBox.left() - hitBox.width + anchor.x * hitBox.width;
             }
         }
-
+        //LIMIT Y
         HLine hLine = GameObject.findIntersects(HLine.class, this.hitBox);
-        if(hLine != null){
-            if(hitBox.checkTopBottom(hLine.hitBox)=="top" && velocity.y <= 0){
+        if (hLine != null) {
+            if (hitBox.checkTopBottom(hLine.hitBox) == "top" && velocity.y <= 0) {
                 velocity.y = 0;
-                position.y = hLine.hitBox.bot()+anchor.y * hitBox.height;
-            }else if(hitBox.checkTopBottom(hLine.hitBox)=="bottom" && velocity.y >= 0){
+                position.y = hLine.hitBox.bot() + anchor.y * hitBox.height;
+            } else if (hitBox.checkTopBottom(hLine.hitBox) == "bottom" && velocity.y >= 0) {
                 velocity.y = 0;
-                position.y = hLine.hitBox.top()- hitBox.height + anchor.y * hitBox.height;
+                position.y = hLine.hitBox.top() - hitBox.height + anchor.y * hitBox.height;
             }
         }
     }
