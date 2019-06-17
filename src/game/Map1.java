@@ -106,5 +106,6 @@ public class Map1 {
         System.out.println(tiles[0] + " " + tiles[1]);
         tiles[0] = GameObject.recycle(Tile.class);
         Map1 map1 = new Map1();
+        String a;
     }
 }
