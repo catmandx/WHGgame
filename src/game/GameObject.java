@@ -1,6 +1,8 @@
 package game;
 
 import game.physics.BoxCollider;
+import game.renderer.BoxRenderer;
+import game.renderer.Renderer;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -8,17 +10,27 @@ import java.util.ArrayList;
 public class GameObject {
     //quan li doi tuong
     public static ArrayList<GameObject> objects = new ArrayList<>();
-    public Vector2D position;
-    public Vector2D velocity;
-    public BoxCollider hitBox;
-    public boolean active;
-    public Vector2D anchor; //vi tri tam anh
 
-    public GameObject() {
-        objects.add(this);
-        position = new Vector2D();
-        velocity = new Vector2D();
-        anchor = new Vector2D(0.5, 0.5);
+
+
+    public static <E extends GameObject> E recycle(Class<E> cls){
+        //1. findInactive >> if found >> reset >> return
+        //2. if not found >> create new >> return
+        E object  = findInactive(cls);
+        if(object != null){
+            object.reset();
+            return object;
+        }
+
+        //cls = PLayer.class
+        //cls.getConstructor().newInstance() ~ new PLayer()
+        try {
+            object = cls.getConstructor().newInstance();
+            return object;
+        }catch(Exception e){
+            e.printStackTrace();
+            return null;
+        }
     }
 
     public static <E extends GameObject> E findInactive(Class<E> cls) {
@@ -49,7 +61,7 @@ public class GameObject {
 
     public static void renderAll(Graphics g) {
         for (int i = 0; i < objects.size(); i++) {
-            objects.get(i).paint(g);
+            objects.get(i).render(g);
         }
     }
 
@@ -59,18 +71,37 @@ public class GameObject {
         }
     }
 
-    public void paint(Graphics g) {
-        //debug
-        g.setColor(Color.CYAN);
-        g.drawRect((int) (hitBox.left()),
-                (int) (hitBox.top()),
-                hitBox.width,
-                hitBox.height);
-        g.setColor(Color.YELLOW);
-        g.fillOval((int) (position.x - 3), (int) (position.y - 3), 5, 5);
+
+    //khai bao doi tuong
+    public Vector2D position;
+    public BoxRenderer renderer;
+    public Vector2D velocity;
+    public BoxCollider hitBox;
+    public boolean active;
+    public Vector2D anchor; //vi tri tam anh
+
+    public GameObject() {
+        objects.add(this);
+        position = new Vector2D();
+        velocity = new Vector2D();
+        anchor = new Vector2D(0.5, 0.5);
+    }
+
+    public void render(Graphics g){
+        if(renderer != null){
+            renderer.render(g, this);
+        }
     }
 
     public void run() {
         position.add(velocity);
+    }
+
+    public void deactive(){
+        active = false;
+    }
+
+    public void reset(){
+        active = true;
     }
 }
