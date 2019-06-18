@@ -1,10 +1,12 @@
 package game;
 
+import game.physics.BoxCollider;
 import game.renderer.BoxRenderer;
 import game.wall.HLine;
 import game.wall.VLine;
 
 import java.awt.*;
+import java.util.Set;
 
 public class Tile extends GameObject{
     //Todo
@@ -26,6 +28,12 @@ public class Tile extends GameObject{
 
     public void setInfo(int i, int j, int tileType){
 
+        //SET POSITION BASED ON MATRIX POSITION
+        this.position.set(
+                Settings.TILE_START_X + i * Settings.WAY_SIZE,
+                Settings.TILE_START_Y + j * Settings.WAY_SIZE);
+
+
         //SET COLOR BASED ON TILETYPE
         switch (tileType){
             case Settings.IS_BLUE_TILE:
@@ -37,7 +45,8 @@ public class Tile extends GameObject{
                 this.isTile = true;
                 break;
             case Settings.IS_GOAL_TILE:
-                color = new Color(179, 251, 179);
+                color = new Color(179, 251, 0);
+                this.hitBox = new BoxCollider(this, Settings.WAY_SIZE, Settings.WAY_SIZE);
                 this.isGoal = true;
                 break;
             case Settings.IS_START_TILE:
@@ -48,17 +57,25 @@ public class Tile extends GameObject{
                 color = new Color(179, 251, 179);
                 this.isCheckpoint = true;
                 break;
-        }
-
-        //SET POSITION BASED ON MATRIX POSITION
-        this.position.set(
-                Settings.TILE_START_X + i * Settings.WAY_SIZE,
-                Settings.TILE_START_Y + j * Settings.WAY_SIZE);
-    }
+        }    }
 
     @Override
     public void render(Graphics g){
         g.setColor(color);
         super.render(g);
+    }
+
+    @Override
+    public void run() {
+        this.checkPlayer();
+    }
+
+    public void checkPlayer(){
+        if(this.hitBox!= null){
+            Player player = GameObject.findIntersects(Player.class, this.hitBox);
+            if (player!=null){
+                System.out.println("win");
+            }
+        }
     }
 }

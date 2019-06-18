@@ -77,4 +77,9 @@ public class BoxCollider {
     public double right() {
         return left() + width;
     }
+
+
+    public String toString(){
+        return "hitbox pos x:"+position.x +" pos y:"+position.y+" width:"+width+" Height: "+height;
+    }
 }
