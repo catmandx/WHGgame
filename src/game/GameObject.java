@@ -59,13 +59,19 @@ public class GameObject {
 
     public static void renderAll(Graphics g) {
         for (int i = 0; i < objects.size(); i++) {
-            objects.get(i).render(g);
+            GameObject object = objects.get(i);
+            if (object.active) {
+                object.render(g);
+            }
         }
     }
 
     public static void runAll() {
         for (int i = 0; i < objects.size(); i++) {
-            objects.get(i).run();
+            GameObject object = objects.get(i);
+            if (object.active) {
+                object.run();
+            }
         }
     }
 
@@ -83,6 +89,7 @@ public class GameObject {
         position = new Vector2D();
         velocity = new Vector2D();
         anchor = new Vector2D(0.5, 0.5);
+        active = true;
     }
 
     public void render(Graphics g){

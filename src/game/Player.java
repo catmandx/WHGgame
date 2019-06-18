@@ -12,14 +12,14 @@ public class Player extends GameObject {
 
     public Player() {
         this.active = true;
-        this.position.set(200, 200);
-        this.hitBox = new BoxCollider(this, 20, 20);
+        position.set(300, 200);
+        hitBox = new BoxCollider(this, 20, 20);
     }
 
     @Override
     public void render(Graphics g) {
         super.render(g);
-        g.setColor(Color.RED);
+        g.setColor(Color.PINK);
         g.fillRect((int) (position.x - 20 * anchor.x), (int) (position.y - 20 * anchor.y), 20, 20);
         g.setColor(Color.BLACK);
         ((Graphics2D) g).setStroke(new BasicStroke(3));
@@ -43,10 +43,19 @@ public class Player extends GameObject {
     @Override
     public void run() {
         this.move();
+        this.checkEnemy() ;
 
 //        this.checkGoal();
         this.limitPosition();
         super.run();
+    }
+
+    private void checkEnemy() {
+        Enemy enemy = GameObject.findIntersects(Enemy.class, this.hitBox);
+        if (enemy != null) {
+            System.out.println("collide");
+            this.deactive();
+        }
     }
 
     private void move() {

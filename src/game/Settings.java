@@ -8,7 +8,9 @@ public class Settings {
     public static final int IS_GOAL_TILE = 4;
     public static final int IS_CHECKPOINT_TILE = 5;
     public static final int IS_START_TILE = 3;
+
     public static final int IS_TILE = 1;
+    public static final int IS_COIN = 2;
 
     //These are used only in class Tile
     public static final int IS_WHITE_TILE = 2;
@@ -34,12 +36,12 @@ public class Settings {
     public static String s =
                     "000000000000000" +
                     "333001011001111" +
-                    "333011111111111" +
-                    "333011111111111" +
-                    "010011111111111" +
-                    "010011111114444" +
-                    "010011111114444" +
-                    "010011111114444" +
-                    "011114111114444" +
+                    "333111111111111" +
+                    "333111111111111" +
+                    "111111133111111" +
+                    "111111111114444" +
+                    "111121111114444" +
+                    "111111111114444" +
+                    "111111111114444" +
                     "000000000010000";
 }

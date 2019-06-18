@@ -59,7 +59,7 @@ public class Map1 {
                     //SET RIGHT WALL
                     try {
                         Tile tile1 = tiles[i + 1][j];
-                        tile1.active = false;
+                        tile1.active = true;
                     } catch (Exception e) {
                         tile.rightWall = GameObject.recycle(VLine.class);
                         tile.rightWall.position.set(
@@ -69,7 +69,7 @@ public class Map1 {
                     //SET LEFT WALL
                     try {
                         Tile tile1 = tiles[i - 1][j];
-                        tile1.active = false;
+                        tile1.active = true;
                     } catch (Exception e) {
                         tile.leftWall = GameObject.recycle(VLine.class);
                         tile.leftWall.position.set(
@@ -80,7 +80,7 @@ public class Map1 {
                     //SET TOP WALL
                     try {
                         Tile tile1 = tiles[i][j-1];
-                        tile1.active = false;
+                        tile1.active = true;
                     } catch (Exception e) {
                         tile.topWall = GameObject.recycle(HLine.class);
                         tile.topWall.position.set(
@@ -91,7 +91,7 @@ public class Map1 {
                     //SET BOTTOM WALL
                     try {
                         Tile tile1 = tiles[i][j+1];
-                        tile1.active = false;
+                        tile1.active = true;
                     } catch (Exception e) {
                         tile.botWall = GameObject.recycle(HLine.class);
                         tile.botWall.position.set(
