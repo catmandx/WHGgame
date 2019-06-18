@@ -19,7 +19,9 @@ public class Map1 {
         this.setWalls();
     }
 
-
+    /**
+     * Đặt xem cái nào là tiles
+     */
     public void setTiles(){
         int charPos = 0;
         for (int i = 0; i < Settings.map1[0].length; i++) {
@@ -46,6 +48,9 @@ public class Map1 {
         }
     }
 
+    /**
+     * Nhìn tên tự hiểu nha
+     */
     public void setWalls(){
         for (int i = 0; i < Settings.NUMBER_OF_COLS; i++) {
             for (int j = 0; j <  Settings.NUMBER_OF_ROWS; j++) {

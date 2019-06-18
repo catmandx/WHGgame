@@ -11,8 +11,6 @@ public class GameObject {
     //quan li doi tuong
     public static ArrayList<GameObject> objects = new ArrayList<>();
 
-
-
     public static <E extends GameObject> E recycle(Class<E> cls){
         //1. findInactive >> if found >> reset >> return
         //2. if not found >> create new >> return

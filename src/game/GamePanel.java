@@ -15,6 +15,12 @@ public class GamePanel extends JPanel {
     public GamePanel() {
         map1 = new Map1();
         player = GameObject.recycle(Player.class);
+        for (int i = 0; i < GameObject.objects.size(); i++) {
+            GameObject object = GameObject.objects.get(i);
+            if(object.getClass() == Tile.class && object.hitBox != null){
+                System.out.println(object.hitBox);
+            }
+        }
     }
 
     public void paint(Graphics g) {

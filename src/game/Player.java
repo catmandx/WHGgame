@@ -1,6 +1,7 @@
 package game;
 
 import game.physics.BoxCollider;
+import game.renderer.BoxRenderer;
 import game.wall.HLine;
 import game.wall.VLine;
 
@@ -11,8 +12,8 @@ public class Player extends GameObject {
 
     public Player() {
         this.active = true;
-        position.set(200, 200);
-        hitBox = new BoxCollider(this, 20, 20);
+        this.position.set(200, 200);
+        this.hitBox = new BoxCollider(this, 20, 20);
     }
 
     @Override
@@ -25,11 +26,25 @@ public class Player extends GameObject {
         g.drawRect((int) (position.x - 20 * anchor.x), (int) (position.y - 20 * anchor.y), 20, 20);
         ((Graphics2D) g).setStroke(new BasicStroke(1));
         super.render(g);
+
+
+        g.setColor(Color.CYAN);
+        try {
+            g.drawRect((int) (hitBox.left()),
+                    (int) (hitBox.top()),
+                    hitBox.width,
+                    hitBox.height);
+        }catch (Exception e){
+        }
+        g.setColor(Color.YELLOW);
+        g.fillOval((int) (position.x - 3), (int) (position.y - 3), 5, 5);
     }
 
     @Override
     public void run() {
         this.move();
+
+//        this.checkGoal();
         this.limitPosition();
         super.run();
     }
@@ -77,6 +92,16 @@ public class Player extends GameObject {
                 velocity.y = 0;
                 position.y = hLine.hitBox.top() - hitBox.height + anchor.y * hitBox.height;
             }
+        }
+    }
+
+    /**
+     * Kiểm tra xem Player có chạm vào Goal Tile hay không.
+     */
+    private void checkGoal(){
+        Tile goal = GameObject.findIntersects(Tile.class, this.hitBox);
+        if(goal != null){
+            System.out.println("You win!");
         }
     }
 }
