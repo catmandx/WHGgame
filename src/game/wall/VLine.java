@@ -7,7 +7,7 @@ import game.renderer.BoxRenderer;
 public class VLine extends Line {
 
     public VLine() {
-        renderer = new BoxRenderer(4, 30, true);
+        renderer = new BoxRenderer(4, 32, true);
         this.active = true;
         this.position = new Vector2D();
         this.hitBox = new BoxCollider(this, 5, 28);

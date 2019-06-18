@@ -34,7 +34,7 @@ public class Settings {
     //Map1
     public static int[][] map1 = new int[NUMBER_OF_COLS][NUMBER_OF_ROWS];
     public static String s =
-            "000000000000000" +
+                    "000000000000000" +
                     "333001011001111" +
                     "333111111111111" +
                     "333111111111111" +
@@ -44,8 +44,4 @@ public class Settings {
                     "111111111114444" +
                     "111111111114444" +
                     "000000000010000";
-    public static void setMapTiles(){
-
-
-    }
 }
