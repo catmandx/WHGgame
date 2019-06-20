@@ -1,37 +1,43 @@
 package game;
 
 import game.physics.BoxCollider;
+import game.renderer.BoxRenderer;
+import game.renderer.Renderer;
 import game.wall.HLine;
 import game.wall.VLine;
 
 import java.awt.*;
 
 public class Player extends GameObject {
-    int i = 0;
 
     public Player() {
         this.active = true;
-        position.set(200, 200);
-        hitBox = new BoxCollider(this, 20, 20);
+        position.set(300, 200);
+        hitBox = new BoxCollider(this, Settings.PLAYER_DIMENSION, Settings.PLAYER_DIMENSION);
+        renderer = new BoxRenderer(Settings.PLAYER_DIMENSION, Settings.PLAYER_DIMENSION, true);
+        borderRenderer = new BoxRenderer(Settings.PLAYER_DIMENSION, Settings.PLAYER_DIMENSION, false);
     }
 
     @Override
     public void render(Graphics g) {
-        super.render(g);
         g.setColor(Color.RED);
-        g.fillRect((int) (position.x - 20 * anchor.x), (int) (position.y - 20 * anchor.y), 20, 20);
-        g.setColor(Color.BLACK);
-        ((Graphics2D) g).setStroke(new BasicStroke(3));
-        g.drawRect((int) (position.x - 20 * anchor.x), (int) (position.y - 20 * anchor.y), 20, 20);
-        ((Graphics2D) g).setStroke(new BasicStroke(1));
         super.render(g);
     }
 
     @Override
     public void run() {
         this.move();
+        this.checkEnemy() ;
         this.limitPosition();
         super.run();
+    }
+
+    private void checkEnemy() {
+        Enemy enemy = GameObject.findIntersects(Enemy.class, this.hitBox);
+        if (enemy != null) {
+            System.out.println("collide");
+            this.deactive();
+        }
     }
 
     private void move() {
@@ -50,7 +56,6 @@ public class Player extends GameObject {
         if (KeyEventPress.isLeftPress) {
             vx -= 2;
         }
-
         velocity.set(vx, vy);
         velocity.setLength(2);
     }
@@ -77,6 +82,16 @@ public class Player extends GameObject {
                 velocity.y = 0;
                 position.y = hLine.hitBox.top() - hitBox.height + anchor.y * hitBox.height;
             }
+        }
+    }
+
+    /**
+     * Kiểm tra xem Player có chạm vào Goal Tile hay không.
+     */
+    private void checkGoal(){
+        Tile goal = GameObject.findIntersects(Tile.class, this.hitBox);
+        if(goal != null){
+            System.out.println("You win!");
         }
     }
 }

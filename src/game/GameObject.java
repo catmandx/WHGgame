@@ -11,8 +11,6 @@ public class GameObject {
     //quan li doi tuong
     public static ArrayList<GameObject> objects = new ArrayList<>();
 
-
-
     public static <E extends GameObject> E recycle(Class<E> cls){
         //1. findInactive >> if found >> reset >> return
         //2. if not found >> create new >> return
@@ -61,20 +59,27 @@ public class GameObject {
 
     public static void renderAll(Graphics g) {
         for (int i = 0; i < objects.size(); i++) {
-            objects.get(i).render(g);
+            GameObject object = objects.get(i);
+            if (object.active) {
+                object.render(g);
+            }
         }
     }
 
     public static void runAll() {
         for (int i = 0; i < objects.size(); i++) {
-            objects.get(i).run();
+            GameObject object = objects.get(i);
+            if (object.active) {
+                object.run();
+            }
         }
     }
 
 
     //khai bao doi tuong
     public Vector2D position;
-    public BoxRenderer renderer;
+    public Renderer renderer;
+    public Renderer borderRenderer;
     public Vector2D velocity;
     public BoxCollider hitBox;
     public boolean active;
@@ -85,11 +90,17 @@ public class GameObject {
         position = new Vector2D();
         velocity = new Vector2D();
         anchor = new Vector2D(0.5, 0.5);
+        active = true;
     }
 
     public void render(Graphics g){
         if(renderer != null){
             renderer.render(g, this);
+        }
+        if(borderRenderer != null){
+            g.setColor(Color.BLACK);
+            ((Graphics2D) g).setStroke(new BasicStroke(3));
+            borderRenderer.render(g, this);
         }
     }
 

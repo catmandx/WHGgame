@@ -3,8 +3,6 @@ package game;
 import game.wall.HLine;
 import game.wall.VLine;
 
-import java.util.Set;
-
 public class Map1 {
 
     public static int columns = 2;
@@ -19,7 +17,9 @@ public class Map1 {
         this.setWalls();
     }
 
-
+    /**
+     * Đặt xem cái nào là tiles
+     */
     public void setTiles(){
         int charPos = 0;
         for (int i = 0; i < Settings.map1[0].length; i++) {
@@ -46,6 +46,9 @@ public class Map1 {
         }
     }
 
+    /**
+     * Nhìn tên tự hiểu nha
+     */
     public void setWalls(){
         for (int i = 0; i < Settings.NUMBER_OF_COLS; i++) {
             for (int j = 0; j <  Settings.NUMBER_OF_ROWS; j++) {
@@ -54,44 +57,44 @@ public class Map1 {
                     //SET RIGHT WALL
                     try {
                         Tile tile1 = tiles[i + 1][j];
-                        tile1.active = false;
+                        tile1.active = true;
                     } catch (Exception e) {
                         tile.rightWall = GameObject.recycle(VLine.class);
                         tile.rightWall.position.set(
-                                tile.position.x + Settings.WAY_SIZE / 2,
+                                tile.position.x + Settings.TILE_SIZE / 2,
                                 tile.position.y);
                     }
                     //SET LEFT WALL
                     try {
                         Tile tile1 = tiles[i - 1][j];
-                        tile1.active = false;
+                        tile1.active = true;
                     } catch (Exception e) {
                         tile.leftWall = GameObject.recycle(VLine.class);
                         tile.leftWall.position.set(
-                                tile.position.x - Settings.WAY_SIZE / 2,
+                                tile.position.x - Settings.TILE_SIZE / 2,
                                 tile.position.y);
                     }
 
                     //SET TOP WALL
                     try {
                         Tile tile1 = tiles[i][j-1];
-                        tile1.active = false;
+                        tile1.active = true;
                     } catch (Exception e) {
                         tile.topWall = GameObject.recycle(HLine.class);
                         tile.topWall.position.set(
                                 tile.position.x ,
-                                tile.position.y - Settings.WAY_SIZE / 2);
+                                tile.position.y - Settings.TILE_SIZE / 2);
                     }
 
                     //SET BOTTOM WALL
                     try {
                         Tile tile1 = tiles[i][j+1];
-                        tile1.active = false;
+                        tile1.active = true;
                     } catch (Exception e) {
                         tile.botWall = GameObject.recycle(HLine.class);
                         tile.botWall.position.set(
                                 tile.position.x ,
-                                tile.position.y + Settings.WAY_SIZE / 2);
+                                tile.position.y + Settings.TILE_SIZE / 2);
                     }
                 }
             }
