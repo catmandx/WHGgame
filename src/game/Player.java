@@ -2,50 +2,32 @@ package game;
 
 import game.physics.BoxCollider;
 import game.renderer.BoxRenderer;
+import game.renderer.Renderer;
 import game.wall.HLine;
 import game.wall.VLine;
 
 import java.awt.*;
 
 public class Player extends GameObject {
-    int i = 0;
 
     public Player() {
         this.active = true;
         position.set(300, 200);
-        hitBox = new BoxCollider(this, 20, 20);
+        hitBox = new BoxCollider(this, Settings.PLAYER_DIMENSION, Settings.PLAYER_DIMENSION);
+        renderer = new BoxRenderer(Settings.PLAYER_DIMENSION, Settings.PLAYER_DIMENSION, true);
+        borderRenderer = new BoxRenderer(Settings.PLAYER_DIMENSION, Settings.PLAYER_DIMENSION, false);
     }
 
     @Override
     public void render(Graphics g) {
+        g.setColor(Color.RED);
         super.render(g);
-        g.setColor(Color.PINK);
-        g.fillRect((int) (position.x - 20 * anchor.x), (int) (position.y - 20 * anchor.y), 20, 20);
-        g.setColor(Color.BLACK);
-        ((Graphics2D) g).setStroke(new BasicStroke(3));
-        g.drawRect((int) (position.x - 20 * anchor.x), (int) (position.y - 20 * anchor.y), 20, 20);
-        ((Graphics2D) g).setStroke(new BasicStroke(1));
-        super.render(g);
-
-
-        g.setColor(Color.CYAN);
-        try {
-            g.drawRect((int) (hitBox.left()),
-                    (int) (hitBox.top()),
-                    hitBox.width,
-                    hitBox.height);
-        }catch (Exception e){
-        }
-        g.setColor(Color.YELLOW);
-        g.fillOval((int) (position.x - 3), (int) (position.y - 3), 5, 5);
     }
 
     @Override
     public void run() {
         this.move();
         this.checkEnemy() ;
-
-//        this.checkGoal();
         this.limitPosition();
         super.run();
     }
@@ -74,7 +56,6 @@ public class Player extends GameObject {
         if (KeyEventPress.isLeftPress) {
             vx -= 2;
         }
-
         velocity.set(vx, vy);
         velocity.setLength(2);
     }

@@ -75,9 +75,11 @@ public class GameObject {
         }
     }
 
+
     //khai bao doi tuong
     public Vector2D position;
     public Renderer renderer;
+    public Renderer borderRenderer;
     public Vector2D velocity;
     public BoxCollider hitBox;
     public boolean active;
@@ -94,6 +96,11 @@ public class GameObject {
     public void render(Graphics g){
         if(renderer != null){
             renderer.render(g, this);
+        }
+        if(borderRenderer != null){
+            g.setColor(Color.BLACK);
+            ((Graphics2D) g).setStroke(new BasicStroke(3));
+            borderRenderer.render(g, this);
         }
     }
 
