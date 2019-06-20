@@ -1,5 +1,7 @@
 package game;
 
+import game.Scene.Game_over.GameoverScene;
+import game.Scene.SceneManager;
 import game.physics.BoxCollider;
 import game.renderer.BoxRenderer;
 import game.renderer.Renderer;
@@ -38,6 +40,12 @@ public class Player extends GameObject {
             System.out.println("collide");
             this.deactive();
         }
+    }
+
+    @Override
+    public void deactive() {
+        super.deactive();
+        SceneManager.signNewScene(new GameoverScene());
     }
 
     private void move() {

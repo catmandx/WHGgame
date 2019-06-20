@@ -19,6 +19,7 @@ public class Program {
         window.addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
+                KeyEventPress.isAnyKeyPress = true;
                 if (e.getKeyCode() == KeyEvent.VK_LEFT || e.getKeyCode() == KeyEvent.VK_A) {
                     KeyEventPress.isLeftPress = true;
                 }
@@ -35,6 +36,7 @@ public class Program {
 
             @Override
             public void keyReleased(KeyEvent e) {
+                KeyEventPress.isAnyKeyPress = false;
                 if (e.getKeyCode() == KeyEvent.VK_LEFT || e.getKeyCode() == KeyEvent.VK_A) {
                     KeyEventPress.isLeftPress = false;
                 }

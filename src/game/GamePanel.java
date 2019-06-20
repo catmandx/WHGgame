@@ -1,7 +1,7 @@
 package game;
 
-import game.wall.HLine;
-import game.wall.VLine;
+import game.Scene.SceneManager;
+import game.Scene.Welcome.WelcomeScene;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,10 +11,11 @@ public class GamePanel extends JPanel {
     Enemy enemy;
     Map1 map1;
 
+
     public GamePanel() {
-        map1 = new Map1();
-        player = GameObject.recycle(Player.class);
-        enemy = GameObject.recycle(Enemy.class);
+        SceneManager.signNewScene(new WelcomeScene());
+
+
     }
 
     public void paint(Graphics g) {
