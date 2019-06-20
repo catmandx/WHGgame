@@ -75,6 +75,9 @@ public class GameObject {
         }
     }
 
+    public static void clearAll() {
+        objects.clear();
+    }
 
     //khai bao doi tuong
     public Vector2D position;

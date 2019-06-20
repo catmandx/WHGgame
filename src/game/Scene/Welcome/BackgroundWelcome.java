@@ -14,8 +14,8 @@ import game.renderer.SingleImageRenderer;
 
 import java.awt.*;
 
-public class BackgroundWellcome extends GameObject {
-    public BackgroundWellcome() {
+public class BackgroundWelcome extends GameObject {
+    public BackgroundWelcome() {
         renderer = new SingleImageRenderer("assets/Scene/643x0w.png");
         position.set(Settings.GAME_WIDTH / 2, Settings.GAME_HEIGHT / 2);
     }
@@ -28,10 +28,6 @@ public class BackgroundWellcome extends GameObject {
     private void checkChangeSence() {
         if(KeyEventPress.isAnyKeyPress) {
             SceneManager.signNewScene(new PlayScene() {
-                @Override
-                public void clear() {
-
-                }
             });
 
             }

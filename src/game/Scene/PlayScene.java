@@ -1,16 +1,18 @@
 package game.Scene;
 
-import game.Background;
-import game.Enemy;
-import game.GameObject;
-import game.Player;
+import game.*;
 
-public abstract class PlayScene extends Scene {
+public class PlayScene extends Scene {
     @Override
     public void init() {
-        GameObject.recycle(Background.class);
+        new Map1();
         GameObject.recycle(Player.class);
         GameObject.recycle(Enemy.class);
+    }
+
+    @Override
+    public void clear() {
+        GameObject.clearAll();
     }
 }
 

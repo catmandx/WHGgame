@@ -28,13 +28,9 @@ public class BackgroundGameover extends GameObject {
     public void checkChangeScene() {
         count++;
         if(KeyEventPress.isAnyKeyPress && count > 120 ) {
-            SceneManager.signNewScene(new PlayScene() {
-                @Override
-                public void clear() {
-
-                }
-            });
+            SceneManager.signNewScene(new PlayScene());
+            };
         }
 
     }
-}
+

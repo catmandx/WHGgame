@@ -1,16 +1,17 @@
-package game.Scene.Game_over;
+package game.Scene.Welcome;
 
 import game.GameObject;
 import game.Scene.Scene;
-import game.Scene.SceneManager;
 
-public class GameoverScene extends Scene {
+public class WelcomeScene extends Scene {
     @Override
     public void init() {
-        GameObject.recycle(BackgroundGameover.class);
+        BackgroundWelcome background = new BackgroundWelcome();
     }
+
     @Override
     public void clear() {
         GameObject.clearAll();
     }
 }
+
