@@ -6,7 +6,6 @@ import game.wall.HLine;
 import game.wall.VLine;
 
 import java.awt.*;
-import java.util.Set;
 
 public class Tile extends GameObject{
     //Todo
@@ -22,7 +21,7 @@ public class Tile extends GameObject{
 
 
     public Tile(){
-        renderer = new BoxRenderer(Settings.WAY_SIZE, Settings.WAY_SIZE, true);
+        renderer = new BoxRenderer(Settings.TILE_SIZE, Settings.TILE_SIZE, true);
         this.active = true;
     }
 
@@ -30,8 +29,8 @@ public class Tile extends GameObject{
 
         //SET POSITION BASED ON MATRIX POSITION
         this.position.set(
-                Settings.TILE_START_X + i * Settings.WAY_SIZE,
-                Settings.TILE_START_Y + j * Settings.WAY_SIZE);
+                Settings.TILE_START_X + i * Settings.TILE_SIZE,
+                Settings.TILE_START_Y + j * Settings.TILE_SIZE);
 
 
         //SET COLOR BASED ON TILETYPE
@@ -46,7 +45,7 @@ public class Tile extends GameObject{
                 break;
             case Settings.IS_GOAL_TILE:
                 color = new Color(179, 251, 0);
-                this.hitBox = new BoxCollider(this, Settings.WAY_SIZE, Settings.WAY_SIZE);
+                this.hitBox = new BoxCollider(this, Settings.TILE_SIZE, Settings.TILE_SIZE);
                 this.isGoal = true;
                 break;
             case Settings.IS_START_TILE:

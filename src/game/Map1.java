@@ -3,8 +3,6 @@ package game;
 import game.wall.HLine;
 import game.wall.VLine;
 
-import java.util.Set;
-
 public class Map1 {
 
     public static int columns = 2;
@@ -63,7 +61,7 @@ public class Map1 {
                     } catch (Exception e) {
                         tile.rightWall = GameObject.recycle(VLine.class);
                         tile.rightWall.position.set(
-                                tile.position.x + Settings.WAY_SIZE / 2,
+                                tile.position.x + Settings.TILE_SIZE / 2,
                                 tile.position.y);
                     }
                     //SET LEFT WALL
@@ -73,7 +71,7 @@ public class Map1 {
                     } catch (Exception e) {
                         tile.leftWall = GameObject.recycle(VLine.class);
                         tile.leftWall.position.set(
-                                tile.position.x - Settings.WAY_SIZE / 2,
+                                tile.position.x - Settings.TILE_SIZE / 2,
                                 tile.position.y);
                     }
 
@@ -85,7 +83,7 @@ public class Map1 {
                         tile.topWall = GameObject.recycle(HLine.class);
                         tile.topWall.position.set(
                                 tile.position.x ,
-                                tile.position.y - Settings.WAY_SIZE / 2);
+                                tile.position.y - Settings.TILE_SIZE / 2);
                     }
 
                     //SET BOTTOM WALL
@@ -96,7 +94,7 @@ public class Map1 {
                         tile.botWall = GameObject.recycle(HLine.class);
                         tile.botWall.position.set(
                                 tile.position.x ,
-                                tile.position.y + Settings.WAY_SIZE / 2);
+                                tile.position.y + Settings.TILE_SIZE / 2);
                     }
                 }
             }
