@@ -75,10 +75,9 @@ public class GameObject {
         }
     }
 
-
     //khai bao doi tuong
     public Vector2D position;
-    public BoxRenderer renderer;
+    public Renderer renderer;
     public Vector2D velocity;
     public BoxCollider hitBox;
     public boolean active;
