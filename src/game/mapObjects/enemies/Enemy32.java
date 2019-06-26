@@ -8,15 +8,14 @@ import game.renderer.OvalRenderer;
 
 import java.awt.*;
 
-public class Enemy3 extends Enemy{
+public class Enemy32 extends Enemy {
     public Vector2D startPosition;
     public Vector2D endPosition;
-
-
-    public Enemy3(){
+    public int speed = 1;
+    public Enemy32(){
         hitBox = new BoxCollider(this, (int)(Settings.ENEMY_DIMENSION * 0.9), (int)(Settings.ENEMY_DIMENSION * 0.9));
-        renderer = new OvalRenderer(Settings.ENEMY_DIMENSION, Settings.ENEMY_DIMENSION, true);
-        borderRenderer = new OvalRenderer(Settings.ENEMY_DIMENSION, Settings.ENEMY_DIMENSION, false);
+        renderer = new OvalRenderer((int)(Settings.ENEMY_DIMENSION * 0.9), (int)(Settings.ENEMY_DIMENSION * 0.9), true);
+        borderRenderer = new OvalRenderer((int)(Settings.ENEMY_DIMENSION * 0.9), (int)(Settings.ENEMY_DIMENSION * 0.9), false);
     }
 
     @Override
@@ -28,8 +27,8 @@ public class Enemy3 extends Enemy{
     @Override
     public void run() {
         this.velocity.set(endPosition.x - startPosition.x, endPosition.y - startPosition.y);
-        if (this.velocity.getLength() > Settings.ENEMY_SPEED){
-            this.velocity.setLength(Settings.ENEMY_SPEED);
+        if (this.velocity.getLength() > speed){
+            this.velocity.setLength(speed);
         }
         this.checkPositions();
         super.run();
@@ -42,7 +41,7 @@ public class Enemy3 extends Enemy{
     }
 
     public void checkPositions(){
-        if (Math.abs(position.y - endPosition.y) < 4 ) {
+        if (Math.abs(position.x - endPosition.x) < speed ) {
             Vector2D temp = new Vector2D();
             temp.set(endPosition);
             endPosition.set(startPosition);

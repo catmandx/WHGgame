@@ -43,7 +43,7 @@ public class Enemy2 extends Enemy {
     }
 
     public void checkPositions(){
-        if (Math.abs(position.y - endPosition.y) < 4 ) {
+        if (Math.abs(position.y - endPosition.y) < Settings.ENEMY_SPEED) {
             Vector2D temp = new Vector2D();
             temp.set(endPosition);
             endPosition.set(startPosition);
