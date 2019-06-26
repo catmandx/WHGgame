@@ -1,6 +1,9 @@
 package game.map;
 
 import game.GameObject;
+import game.Scene.Scene;
+import game.Scene.SceneManager;
+import game.Scene.win.WinScene;
 import game.Settings;
 import game.mapObjects.Tile;
 import game.mapObjects.enemies.Enemy1;
@@ -74,8 +77,9 @@ public class Map3 extends Map {
     public void signNextMap() {
         super.signNextMap();
         if (this.isDone) {
-            Settings.NUMBER_OF_DEATHS = 0;
-            MapManager.signNewMap(new Map3());
+//            Settings.NUMBER_OF_DEATHS = 0;
+//            MapManager.signNewMap(new Map4());
+            SceneManager.signNewScene(new WinScene());
         } else {
             MapManager.signNewMap(new Map3());
         }
