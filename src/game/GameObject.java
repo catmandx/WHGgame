@@ -102,7 +102,7 @@ public class GameObject {
         }
         if(borderRenderer != null){
             g.setColor(Color.BLACK);
-            ((Graphics2D) g).setStroke(new BasicStroke(3));
+            ((Graphics2D) g).setStroke(new BasicStroke(2));
             borderRenderer.render(g, this);
         }
     }

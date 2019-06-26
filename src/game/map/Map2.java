@@ -1,6 +1,7 @@
 package game.map;
 
 import game.GameObject;
+import game.mapObjects.Dot;
 import game.mapObjects.Player;
 import game.Settings;
 import game.mapObjects.Tile;
@@ -27,6 +28,13 @@ public class Map2 extends Map{
         this.setWalls();
         this.setEnemies();
         this.setPlayer();
+        this.setDot();
+    }
+
+    public void setDot(){
+        Dot dot = new Dot();
+        dot.position.set(tiles[9][4].position.x + Settings.TILE_DIMENSIONS/2,tiles[9][4].position.y + Settings.TILE_DIMENSIONS/2);
+        this.numberOfDots = 1;
     }
 
     public void setEnemies(){
@@ -60,6 +68,7 @@ public class Map2 extends Map{
     public void signNextMap() {
         super.signNextMap();
         if (this.isDone) {
+            Settings.NUMBER_OF_DEATHS = 0;
             MapManager.signNewMap(new Map2());
         } else {
             MapManager.signNewMap(new Map2());

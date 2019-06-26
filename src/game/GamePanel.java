@@ -18,6 +18,9 @@ public class GamePanel extends JPanel {
     public void paint(Graphics g) {
         g.setColor(new Color(181, 181, 255));
         g.fillRect(0, 0, 800, 600);
+        g.setColor(Color.BLACK);
+        g.setFont(new Font("TimesRoman", Font.BOLD, 20));
+        g.drawString("DEATHS: "+Settings.NUMBER_OF_DEATHS, 100, 100);
         GameObject.renderAll(g);
     }
 
