@@ -43,8 +43,8 @@ public class GameObject {
     }
 
     public static <E extends GameObject> E findIntersects(Class<E> cls, BoxCollider hitBox) {
-        //E ~Enemy |Player|bullet....
-        //cls ~ Enemy.class | Player.class | Enemy.class..
+        //E ~Enemy1 |Player|bullet....
+        //cls ~ Enemy1.class | Player.class | Enemy1.class..
         for (int i = 0; i < objects.size(); i++) {
             GameObject object = objects.get(i);
             if (object.active

@@ -60,6 +60,11 @@ public class Vector2D {
         this.y = y;
     }
 
+    public void set(Vector2D other){
+        this.x = other.x;
+        this.y = other.y;
+    }
+
     public double getLength() {
         return (Math.sqrt(x * x + y * y));
     }

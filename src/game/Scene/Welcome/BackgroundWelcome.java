@@ -27,10 +27,8 @@ public class BackgroundWelcome extends GameObject {
 
     private void checkChangeSence() {
         if(KeyEventPress.isAnyKeyPress) {
-            SceneManager.signNewScene(new PlayScene() {
-            });
+            SceneManager.signNewScene(new PlayScene());
 
             }
         }
     }
-

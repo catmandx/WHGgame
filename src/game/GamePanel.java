@@ -2,20 +2,17 @@ package game;
 
 import game.Scene.SceneManager;
 import game.Scene.Welcome.WelcomeScene;
+import game.map.*;
+import game.map.MapManager;
 
 import javax.swing.*;
 import java.awt.*;
 
 public class GamePanel extends JPanel {
-    Player player;
-    Enemy enemy;
-    Map1 map1;
-
 
     public GamePanel() {
         SceneManager.signNewScene(new WelcomeScene());
-
-
+        MapManager.currentMap = new Map0();
     }
 
     public void paint(Graphics g) {

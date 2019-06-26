@@ -2,9 +2,10 @@ package game;
 
 public class Settings {
     //Player
-    public static final int PLAYER_DIMENSION = 20;
+    public static final int PLAYER_DIMENSION = 17;
     //Dot
-    public static final int ENEMY_DIMENSION = 20;
+    public static final int ENEMY_DIMENSION = 15;
+    public static final int ENEMY_SPEED = 4;
     //Tile && MAP
     public static final int TILE_DIMENSIONS = 30;
     public static final int IS_GOAL_TILE = 4;
@@ -20,27 +21,28 @@ public class Settings {
     //Game
     public static final int GAME_WIDTH = 800;
     public static final int GAME_HEIGHT = 600;
-    //Map
+    //map
     public static final int TILE_SIZE = 30;
     public static final int WALL_THICKNESS = 4;
     //    public static final int NUMBER_OF_COLS = GAME_WIDTH / TILE_SIZE;
 //    public static final int NUMBER_OF_ROWS = GAME_HEIGHT / TILE_SIZE;
-    public static final int NUMBER_OF_COLS = 15;
-    public static final int NUMBER_OF_ROWS = 10;
-    public static final int TILE_START_X = (GAME_WIDTH - NUMBER_OF_COLS * TILE_SIZE) / 2;
-    public static final int TILE_START_Y = (GAME_HEIGHT - NUMBER_OF_ROWS * TILE_SIZE) / 2;
+    public static int NUMBER_OF_COLS = 20;
+    public static int NUMBER_OF_ROWS = 10;
+    public static int TILE_START_X = (GAME_WIDTH - NUMBER_OF_COLS * TILE_SIZE) / 2;
+    public static int TILE_START_Y = (GAME_HEIGHT - NUMBER_OF_ROWS * TILE_SIZE) / 2;
 
     //Map1
-    public static int[][] map1 = new int[NUMBER_OF_COLS][NUMBER_OF_ROWS];
-    public static String s =
-                    "000000000000000" +
-                    "333011101001111" +
-                    "333010101111111" +
-                    "333010101011111" +
-                    "010010101011111" +
-                    "010010101014444" +
-                    "010010101014444" +
-                    "010010101014444" +
-                    "011110111114444" +
-                    "000000000010000";
+    public static int[][] mapMatrix = new int[NUMBER_OF_COLS][NUMBER_OF_ROWS];
+
+    public static String s=
+            "00000000000000000000" +
+            "33300000000000011444" +
+            "33301111111111110444" +
+            "33301111111111110444" +
+            "33301111111111110444" +
+            "33301111111111110444" +
+            "33301111111111110444" +
+            "33301111111111110444" +
+            "33301111111111110444" +
+            "33311000000000000000";
 }

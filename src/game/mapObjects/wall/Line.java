@@ -1,7 +1,6 @@
-package game.wall;
+package game.mapObjects.wall;
 
 import game.GameObject;
-import game.physics.BoxCollider;
 
 import java.awt.*;
 

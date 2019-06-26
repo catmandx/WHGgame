@@ -1,23 +1,26 @@
-package game;
+package game.mapObjects;
 
+import game.GameObject;
+import game.Settings;
+import game.map.MapManager;
 import game.physics.BoxCollider;
 import game.renderer.BoxRenderer;
-import game.wall.HLine;
-import game.wall.VLine;
+import game.mapObjects.wall.HLine;
+import game.mapObjects.wall.VLine;
 
 import java.awt.*;
 
-public class Tile extends GameObject{
+public class Tile extends GameObject {
     //Todo
-    boolean isGoal;
-    boolean isStart;
-    boolean isTile;
-    boolean isCheckpoint;
-    VLine leftWall;
-    VLine rightWall;
-    HLine topWall;
-    HLine botWall;
-    Color color;
+    public boolean isGoal;
+    public boolean isStart;
+    public boolean isTile;
+    public boolean isCheckpoint;
+    public VLine leftWall;
+    public VLine rightWall;
+    public HLine topWall;
+    public HLine botWall;
+    public Color color;
 
 
     public Tile(){
@@ -73,7 +76,8 @@ public class Tile extends GameObject{
         if(this.hitBox!= null){
             Player player = GameObject.findIntersects(Player.class, this.hitBox);
             if (player!=null){
-                System.out.println("win");
+                MapManager.currentMap.isDone = true;
+                MapManager.currentMap.signNextMap();
             }
         }
     }

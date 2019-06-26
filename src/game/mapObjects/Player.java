@@ -1,12 +1,15 @@
-package game;
+package game.mapObjects;
 
+import game.GameObject;
+import game.KeyEventPress;
 import game.Scene.Game_over.GameoverScene;
 import game.Scene.SceneManager;
+import game.Settings;
+import game.mapObjects.enemies.Enemy1;
 import game.physics.BoxCollider;
 import game.renderer.BoxRenderer;
-import game.renderer.Renderer;
-import game.wall.HLine;
-import game.wall.VLine;
+import game.mapObjects.wall.HLine;
+import game.mapObjects.wall.VLine;
 
 import java.awt.*;
 
@@ -35,10 +38,11 @@ public class Player extends GameObject {
     }
 
     private void checkEnemy() {
-        Enemy enemy = GameObject.findIntersects(Enemy.class, this.hitBox);
-        if (enemy != null) {
-            System.out.println("collide");
-            this.deactive();
+        if(!KeyEventPress.isImmortal) {
+            Enemy1 enemy1 = GameObject.findIntersects(Enemy1.class, this.hitBox);
+            if (enemy1 != null) {
+                this.deactive();
+            }
         }
     }
 
@@ -95,11 +99,11 @@ public class Player extends GameObject {
 
     /**
      * Kiểm tra xem Player có chạm vào Goal Tile hay không.
-     */
-    private void checkGoal(){
-        Tile goal = GameObject.findIntersects(Tile.class, this.hitBox);
-        if(goal != null){
-            System.out.println("You win!");
-        }
-    }
+//     */
+//    private void checkGoal(){
+//        Tile goal = GameObject.findIntersects(Tile.class, this.hitBox);
+//        if(goal != null){
+//            System.out.println("You win!");
+//        }
+//    }
 }
