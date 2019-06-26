@@ -5,6 +5,7 @@ import game.KeyEventPress;
 import game.Scene.Game_over.GameoverScene;
 import game.Scene.SceneManager;
 import game.Settings;
+import game.mapObjects.enemies.Enemy;
 import game.mapObjects.enemies.Enemy1;
 import game.physics.BoxCollider;
 import game.renderer.BoxRenderer;
@@ -39,7 +40,7 @@ public class Player extends GameObject {
 
     private void checkEnemy() {
         if(!KeyEventPress.isImmortal) {
-            Enemy1 enemy1 = GameObject.findIntersects(Enemy1.class, this.hitBox);
+            Enemy enemy1 = GameObject.findIntersects(Enemy.class, this.hitBox);
             if (enemy1 != null) {
                 this.deactive();
             }

@@ -9,7 +9,7 @@ import game.renderer.OvalRenderer;
 
 import java.awt.*;
 
-public class Enemy1 extends GameObject {
+public class Enemy1 extends Enemy {
     public Vector2D startPosition;
     public Vector2D endPosition;
 
@@ -36,7 +36,7 @@ public class Enemy1 extends GameObject {
         super.run();
     }
 
-    public void setPathHorizontal(Tile startTile, Tile endTile){
+    public void setPath(Tile startTile, Tile endTile){
         this.position.set(startTile.position);
         this.startPosition = new Vector2D(startTile.position.x, startTile.position.y);
         this.endPosition = new Vector2D(endTile.position.x, endTile.position.y);

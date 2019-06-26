@@ -9,7 +9,7 @@ import game.renderer.OvalRenderer;
 
 import java.awt.*;
 
-public class Enemy2 extends GameObject {
+public class Enemy2 extends Enemy {
     public Vector2D startPosition;
     public Vector2D endPosition;
 

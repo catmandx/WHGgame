@@ -20,19 +20,19 @@ public class Map1 extends Map{
 
     public void setEnemies(){
         Enemy1 enemy1 = GameObject.recycle(Enemy1.class);
-        enemy1.setPathHorizontal(tilesMap1[4][2], tilesMap1[15][2]);
+        enemy1.setPath(tilesMap1[4][2], tilesMap1[15][2]);
         enemy1 = GameObject.recycle(Enemy1.class);
-        enemy1.setPathHorizontal(tilesMap1[15][3], tilesMap1[4][3]);
+        enemy1.setPath(tilesMap1[15][3], tilesMap1[4][3]);
         enemy1 = GameObject.recycle(Enemy1.class);
-        enemy1.setPathHorizontal(tilesMap1[4][4], tilesMap1[15][4]);
+        enemy1.setPath(tilesMap1[4][4], tilesMap1[15][4]);
         enemy1 = GameObject.recycle(Enemy1.class);
-        enemy1.setPathHorizontal(tilesMap1[15][5], tilesMap1[4][5]);
+        enemy1.setPath(tilesMap1[15][5], tilesMap1[4][5]);
         enemy1 = GameObject.recycle(Enemy1.class);
-        enemy1.setPathHorizontal(tilesMap1[4][6], tilesMap1[15][6]);
+        enemy1.setPath(tilesMap1[4][6], tilesMap1[15][6]);
         enemy1 = GameObject.recycle(Enemy1.class);
-        enemy1.setPathHorizontal(tilesMap1[15][7], tilesMap1[4][7]);
+        enemy1.setPath(tilesMap1[15][7], tilesMap1[4][7]);
         enemy1 = GameObject.recycle(Enemy1.class);
-        enemy1.setPathHorizontal(tilesMap1[4][8], tilesMap1[15][8]);
+        enemy1.setPath(tilesMap1[4][8], tilesMap1[15][8]);
     }
     /**
      * Đặt xem cái nào là tilesMapMatrix
