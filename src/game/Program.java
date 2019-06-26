@@ -1,5 +1,7 @@
 package game;
 
+import game.map.MapManager;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyAdapter;
@@ -38,6 +40,10 @@ public class Program {
                     }else{
                         KeyEventPress.isImmortal = false;
                     }
+                }
+                if(e.getKeyCode() == KeyEvent.VK_P){
+                    MapManager.currentMap.isDone = true;
+                    MapManager.currentMap.signNextMap();
                 }
             }
 
