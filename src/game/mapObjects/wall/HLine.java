@@ -1,4 +1,4 @@
-package game.wall;
+package game.mapObjects.wall;
 
 import game.Settings;
 import game.Vector2D;

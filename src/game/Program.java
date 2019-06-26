@@ -32,6 +32,13 @@ public class Program {
                 if (e.getKeyCode() == KeyEvent.VK_DOWN || e.getKeyCode() == KeyEvent.VK_S) {
                     KeyEventPress.isDownPress = true;
                 }
+                if(e.getKeyCode() == KeyEvent.VK_I){
+                    if(KeyEventPress.isImmortal == false){
+                        KeyEventPress.isImmortal = true;
+                    }else{
+                        KeyEventPress.isImmortal = false;
+                    }
+                }
             }
 
             @Override
@@ -53,6 +60,7 @@ public class Program {
         });
 
         window.setVisible(true);
+        window.setResizable(false);
         panel.gameLoop();
     }
 }
