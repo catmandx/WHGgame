@@ -1,6 +1,9 @@
 package game.map;
 
 import game.GameObject;
+import game.Scene.Scene;
+import game.Scene.SceneManager;
+import game.Scene.win.WinScene;
 import game.mapObjects.Dot;
 import game.mapObjects.Player;
 import game.Settings;
