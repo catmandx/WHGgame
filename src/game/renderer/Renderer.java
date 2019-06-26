@@ -29,17 +29,5 @@ public abstract class Renderer {
                 (int) (master.position.x - image.getWidth() * master.anchor.x),
                 (int) (master.position.y - image.getHeight() * master.anchor.y),
                 null);
-
-        g.setColor(Color.CYAN);
-        try {
-            g.drawRect((int) (master.hitBox.left()),
-                    (int) (master.hitBox.top()),
-                    master.hitBox.width,
-                    master.hitBox.height);
-        }catch (Exception e){
-
-        }
-        g.setColor(Color.YELLOW);
-        g.fillOval((int) (master.position.x - 3), (int) (master.position.y - 3), 5, 5);
     }
 }
