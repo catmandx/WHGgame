@@ -5,6 +5,7 @@ import game.KeyEventPress;
 import game.Scene.Game_over.GameoverScene;
 import game.Scene.SceneManager;
 import game.Settings;
+import game.map.MapManager;
 import game.mapObjects.enemies.Enemy;
 import game.mapObjects.enemies.Enemy1;
 import game.physics.BoxCollider;
@@ -33,15 +34,24 @@ public class Player extends GameObject {
     @Override
     public void run() {
         this.move();
-        this.checkEnemy() ;
+        this.checkEnemy();
+        this.checkDot();
         this.limitPosition();
         super.run();
     }
 
+    private void checkDot(){
+        Dot dot = GameObject.findIntersects(Dot.class, this.hitBox);
+        if(dot!=null){
+            dot.deactive();
+            MapManager.currentMap.numberOfDots--;
+        }
+    }
     private void checkEnemy() {
         if(!KeyEventPress.isImmortal) {
             Enemy enemy1 = GameObject.findIntersects(Enemy.class, this.hitBox);
             if (enemy1 != null) {
+                Settings.NUMBER_OF_DEATHS++;
                 this.deactive();
             }
         }

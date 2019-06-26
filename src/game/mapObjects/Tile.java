@@ -73,7 +73,7 @@ public class Tile extends GameObject {
     }
 
     public void checkPlayer(){
-        if(this.hitBox!= null){
+        if(this.hitBox!= null && MapManager.currentMap.numberOfDots == 0){
             Player player = GameObject.findIntersects(Player.class, this.hitBox);
             if (player!=null){
                 MapManager.currentMap.isDone = true;

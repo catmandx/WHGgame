@@ -2,6 +2,7 @@ package game.map;
 
 import game.GameObject;
 import game.Settings;
+import game.mapObjects.Dot;
 import game.mapObjects.Player;
 import game.mapObjects.Tile;
 import game.mapObjects.enemies.Enemy1;
@@ -50,10 +51,10 @@ public class Map1 extends Map {
     public void signNextMap() {
         super.signNextMap();
         if (this.isDone) {
+            Settings.NUMBER_OF_DEATHS = 0;
             MapManager.signNewMap(new Map2());
         } else {
             MapManager.signNewMap(new Map1());
-
         }
     }
 }

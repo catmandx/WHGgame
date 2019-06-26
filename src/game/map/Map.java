@@ -8,10 +8,12 @@ import game.mapObjects.wall.HLine;
 import game.mapObjects.wall.VLine;
 
 public abstract class Map {
+    public int numberOfDots;
     public Tile[][] tiles;
     public String map;
     public boolean isDone = false;
     public abstract void setEnemies();
+
     public void signNextMap(){
         GameObject.clearAll();
     }

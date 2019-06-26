@@ -28,7 +28,7 @@ public class Enemy1 extends Enemy {
 
     @Override
     public void run() {
-        this.velocity.set(endPosition.x - startPosition.x, endPosition.y - endPosition.y);
+        this.velocity.set(endPosition.x - startPosition.x, endPosition.y - startPosition.y);
         if (this.velocity.getLength() > Settings.ENEMY_SPEED){
             this.velocity.setLength(Settings.ENEMY_SPEED);
         }

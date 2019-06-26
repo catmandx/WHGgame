@@ -4,6 +4,8 @@ public class Settings {
     //Player
     public static final int PLAYER_DIMENSION = 17;
     //Dot
+    public static final int DOT_DIMENSION = 10;
+    //Enemy
     public static final int ENEMY_DIMENSION = 15;
     public static final int ENEMY_SPEED = 4;
     //Tile && MAP
@@ -19,6 +21,7 @@ public class Settings {
     public static final int IS_WHITE_TILE = 2;
     public static final int IS_BLUE_TILE = 1;
     //Game
+    public static int NUMBER_OF_DEATHS = 0;
     public static final int GAME_WIDTH = 800;
     public static final int GAME_HEIGHT = 600;
     //map
