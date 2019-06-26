@@ -137,7 +137,12 @@ public class Map1 extends Map{
     @Override
     public void signNextMap(){
         super.signNextMap();
-        MapManager.signNewMap(new Map2());
+        if(this.isDone) {
+            MapManager.signNewMap(new Map2());
+        }else{
+            MapManager.signNewMap(new Map1());
+
+        }
     }
 
     public static void main(String[] args) {

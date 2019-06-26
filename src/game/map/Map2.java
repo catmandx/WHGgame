@@ -13,16 +13,16 @@ public class Map2 extends Map{
     public Tile[][] tilesMapMatrix;
 
     public static String map2 =
-            "00011111111111100000" +
-            "00011111111111100000" +
-            "33311111111111144400" +
-            "33311111111111144400" +
-            "00011111111111100000" +
-            "00011111111111100000" +
             "00000000000000000000" +
             "00000000000000000000" +
+            "00001111111111110000" +
+            "00001111111111110000" +
+            "03331111111111114440" +
+            "03331111111111114440" +
+            "00001111111111110000" +
+            "00001111111111110000" +
             "00000000000000000000" +
-            "00000000000000000000";
+            "00000000000000000000" ;
     public Map2(){
         tilesMapMatrix = new Tile[Settings.NUMBER_OF_COLS][Settings.NUMBER_OF_ROWS];
         this.setTiles();
@@ -33,29 +33,29 @@ public class Map2 extends Map{
 
     public void setEnemies(){
         Enemy2 enemy2 = GameObject.recycle(Enemy2.class);
-        enemy2.setPath(tilesMapMatrix[3][0], tilesMapMatrix[3][5]);
+        enemy2.setPath(tilesMapMatrix[4][2], tilesMapMatrix[4][7]);
         enemy2 = GameObject.recycle(Enemy2.class);
-        enemy2.setPath(tilesMapMatrix[4][5], tilesMapMatrix[4][0]);
+        enemy2.setPath(tilesMapMatrix[5][7], tilesMapMatrix[5][2]);
         enemy2 = GameObject.recycle(Enemy2.class);
-        enemy2.setPath(tilesMapMatrix[5][0], tilesMapMatrix[5][5]);
+        enemy2.setPath(tilesMapMatrix[6][2], tilesMapMatrix[6][7]);
         enemy2 = GameObject.recycle(Enemy2.class);
-        enemy2.setPath(tilesMapMatrix[6][5], tilesMapMatrix[6][0]);
+        enemy2.setPath(tilesMapMatrix[7][7], tilesMapMatrix[7][2]);
         enemy2 = GameObject.recycle(Enemy2.class);
-        enemy2.setPath(tilesMapMatrix[7][0], tilesMapMatrix[7][5]);
+        enemy2.setPath(tilesMapMatrix[8][2], tilesMapMatrix[8][7]);
         enemy2 = GameObject.recycle(Enemy2.class);
-        enemy2.setPath(tilesMapMatrix[8][5], tilesMapMatrix[8][0]);
+        enemy2.setPath(tilesMapMatrix[9][7], tilesMapMatrix[9][2]);
         enemy2 = GameObject.recycle(Enemy2.class);
-        enemy2.setPath(tilesMapMatrix[9][0], tilesMapMatrix[9][5]);
+        enemy2.setPath(tilesMapMatrix[10][2], tilesMapMatrix[10][7]);
         enemy2 = GameObject.recycle(Enemy2.class);
-        enemy2.setPath(tilesMapMatrix[10][5], tilesMapMatrix[10][0]);
+        enemy2.setPath(tilesMapMatrix[11][7], tilesMapMatrix[11][2]);
         enemy2 = GameObject.recycle(Enemy2.class);
-        enemy2.setPath(tilesMapMatrix[11][0], tilesMapMatrix[11][5]);
+        enemy2.setPath(tilesMapMatrix[12][2], tilesMapMatrix[12][7]);
         enemy2 = GameObject.recycle(Enemy2.class);
-        enemy2.setPath(tilesMapMatrix[12][5], tilesMapMatrix[12][0]);
+        enemy2.setPath(tilesMapMatrix[13][7], tilesMapMatrix[13][2]);
         enemy2 = GameObject.recycle(Enemy2.class);
-        enemy2.setPath(tilesMapMatrix[13][0], tilesMapMatrix[13][5]);
+        enemy2.setPath(tilesMapMatrix[14][2], tilesMapMatrix[14][7]);
         enemy2 = GameObject.recycle(Enemy2.class);
-        enemy2.setPath(tilesMapMatrix[14][5], tilesMapMatrix[14][0]);
+        enemy2.setPath(tilesMapMatrix[15][7], tilesMapMatrix[15][2]);
     }
 
     @Override

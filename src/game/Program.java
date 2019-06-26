@@ -60,6 +60,7 @@ public class Program {
         });
 
         window.setVisible(true);
+        window.setResizable(false);
         panel.gameLoop();
     }
 }
