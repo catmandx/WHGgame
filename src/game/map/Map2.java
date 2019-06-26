@@ -69,7 +69,7 @@ public class Map2 extends Map{
         super.signNextMap();
         if (this.isDone) {
             Settings.NUMBER_OF_DEATHS = 0;
-            MapManager.signNewMap(new Map2());
+            MapManager.signNewMap(new Map3());
         } else {
             MapManager.signNewMap(new Map2());
 
