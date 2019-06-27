@@ -1,9 +1,7 @@
 package game;
 
 import game.physics.BoxCollider;
-import game.renderer.BoxRenderer;
 import game.renderer.Renderer;
-
 import java.awt.*;
 import java.util.ArrayList;
 
@@ -30,6 +28,7 @@ public class GameObject {
             return null;
         }
     }
+
 
     public static <E extends GameObject> E findInactive(Class<E> cls) {
         for (int i = 0; i < objects.size(); i++) {
@@ -65,6 +64,7 @@ public class GameObject {
             }
         }
     }
+
 
     public static void runAll() {
         for (int i = 0; i < objects.size(); i++) {
