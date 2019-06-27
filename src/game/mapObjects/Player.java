@@ -48,14 +48,14 @@ public class Player extends GameObject {
         }
     }
     private void checkEnemy() {
-        if(!KeyEventPress.isImmortal) {
+//        if(!KeyEventPress.isImmortal) {
             Enemy enemy1 = GameObject.findIntersects(Enemy.class, this.hitBox);
             if (enemy1 != null) {
                 Settings.NUMBER_OF_DEATHS++;
                 this.deactive();
             }
         }
-    }
+
 
     @Override
     public void deactive() {
