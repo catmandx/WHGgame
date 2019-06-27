@@ -21,8 +21,8 @@ public class GamePanel extends JPanel {
         g.setColor(Color.BLACK);
         g.setFont(new Font("TimesRoman", Font.BOLD, 20));
         g.drawString("DEATHS: "+Settings.NUMBER_OF_DEATHS, 100, 100);
-        g.drawString("Press I to be Immortal", 300, 100);
-        g.drawString("Press P to skip level", 300, 50);
+//        g.drawString("Press I to be Immortal", 300, 100);
+//        g.drawString("Press P to skip level", 300, 50);
         GameObject.renderAll(g);
     }
 
