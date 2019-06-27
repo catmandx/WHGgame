@@ -12,7 +12,7 @@ import java.awt.*;
 public class Enemy2 extends Enemy {
     public Vector2D startPosition;
     public Vector2D endPosition;
-
+    public int speed = 3;
 
     public Enemy2(){
         hitBox = new BoxCollider(this, (int)(Settings.ENEMY_DIMENSION * 0.9), (int)(Settings.ENEMY_DIMENSION * 0.9));
@@ -29,8 +29,8 @@ public class Enemy2 extends Enemy {
     @Override
     public void run() {
         this.velocity.set(endPosition.x - startPosition.x, endPosition.y - startPosition.y);
-        if (this.velocity.getLength() > Settings.ENEMY_SPEED){
-            this.velocity.setLength(Settings.ENEMY_SPEED);
+        if (this.velocity.getLength() > speed){
+            this.velocity.setLength(speed);
         }
         this.checkPositions();
         super.run();
@@ -43,7 +43,7 @@ public class Enemy2 extends Enemy {
     }
 
     public void checkPositions(){
-        if (Math.abs(position.y - endPosition.y) < 4 ) {
+        if (Math.abs(position.y - endPosition.y) < speed) {
             Vector2D temp = new Vector2D();
             temp.set(endPosition);
             endPosition.set(startPosition);

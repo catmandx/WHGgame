@@ -12,7 +12,7 @@ import java.awt.*;
 
 public class BackgroundWin extends GameObject {
     public BackgroundWin() {
-        renderer = new AnimationRenderer("assets/Scene/Win",5, false);
+        renderer = new AnimationRenderer("assets/Scene/Win",10, false);
         position.set(Settings.GAME_WIDTH / 2, Settings.GAME_HEIGHT / 2);
     }
     @Override
@@ -33,6 +33,8 @@ public class BackgroundWin extends GameObject {
     public void render(Graphics g){
         g.setColor(Color.WHITE);
         g.fillRect(0,0, Settings.GAME_WIDTH, Settings.GAME_HEIGHT);
+        g.setColor(Color.MAGENTA);
+        g.drawString("CONGRATULATIONS!!! YOU WIN!!!",200, 100);
         super.render(g);
     }
 }
